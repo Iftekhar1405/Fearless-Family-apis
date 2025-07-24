@@ -5,24 +5,19 @@ import { ValidationPipe } from "@nestjs/common";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // ✅ Enable CORS for any origin
+  // ✅ Allow CORS from any origin (no CORS errors for any request)
   app.enableCors({
-    origin: [
-      "https://fearlessfamily.vercel.app",
-      "http://localhost:3000",
-      "http://localhost:3002",
-      "http://192.168.1.16:3000",
-    ], // replace with your actual frontend IP(s)
+    origin: true, // or use "*" but `true` handles credentials properly
     credentials: true,
   });
 
-  // Enable validation pipes
+  // ✅ Global validation
   app.useGlobalPipes(new ValidationPipe());
 
-  // Set global prefix
+  // ✅ API route prefix
   app.setGlobalPrefix("api");
 
   await app.listen(3001);
-  console.log("Backend server running on http://localhost:3001");
+  console.log("✅ Backend server running on http://localhost:3001");
 }
 bootstrap();
