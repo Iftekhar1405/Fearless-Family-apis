@@ -7,6 +7,7 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
         origin: [
+            "https://fearlessfamily.vercel.app",
             "http://localhost:3000",
             "http://localhost:3002",
             "http://192.168.1.16:3000",

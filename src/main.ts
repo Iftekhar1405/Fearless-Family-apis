@@ -8,6 +8,7 @@ async function bootstrap() {
   // ✅ Enable CORS for any origin
   app.enableCors({
     origin: [
+      "https://fearlessfamily.vercel.app",
       "http://localhost:3000",
       "http://localhost:3002",
       "http://192.168.1.16:3000",
