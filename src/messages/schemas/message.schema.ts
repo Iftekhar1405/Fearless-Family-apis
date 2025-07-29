@@ -14,7 +14,18 @@ export class Message {
   @Prop({ required: true })
   familyCode: string;
 
-  // Note: We don't store sender information to maintain anonymity
+
+  @Prop({ type: Types.ObjectId, ref: 'Member', required: false })
+  senderId?: Types.ObjectId;
+
+  @Prop({ required: false })
+  senderName?: string;
+
+  @Prop()
+  createdAt?: Date;
+
+  @Prop()
+  updatedAt?: Date;
 }
 
 export const MessageSchema = SchemaFactory.createForClass(Message);

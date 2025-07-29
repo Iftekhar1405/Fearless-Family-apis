@@ -1,7 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FamiliesModule } from './families/families.module';
 import { MessagesModule } from './messages/messages.module';
+import { APP_PIPE } from '@nestjs/core';
+import { WebSocketModule } from './websocket/websocket.module';
 
 @Module({
   imports: [
@@ -10,6 +12,14 @@ import { MessagesModule } from './messages/messages.module';
     ),
     FamiliesModule,
     MessagesModule,
+    WebSocketModule
+  ],
+
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
   ],
 })
 export class AppModule { }

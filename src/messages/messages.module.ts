@@ -14,5 +14,6 @@ import { FamiliesModule } from '../families/families.module';
   ],
   controllers: [MessagesController],
   providers: [MessagesService],
+  exports : [MessagesService]
 })
 export class MessagesModule {}
